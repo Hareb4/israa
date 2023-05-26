@@ -1,0 +1,12 @@
+body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    background-color: #569f45;
+    color: aliceblue;
+}
+
+@media (max-width: 400px) {
+    body {
+        background-color: rgb(29, 120, 210);
+        color: aqua;
+    }
+}
