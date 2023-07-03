@@ -1,22 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link href="style.css" rel="stylesheet">
 
 </head>
 
 <body>
     <header>
-        <h1>الإسراء</h1>
-        <div>حارب</div>
+        <nav class="box navbar">
+            <h1><sup class="sup">مشروع</sup> إسراء</h1>
+        </nav>
     </header>
     <main>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="city box">
+            <h4>Abu Dhabi</h4>
+        </div>
+        <div class="azan grid">
+            <div class="d2 box">
+                <div class="box-content" id="Fajr">
+                    <h2>الفجر</h2>
+                </div>
+            </div>
+            <div class="d2 box">
+                <div class="box-content" id="Dhuhr">
+                    <h2>الظهر</h2>
+                </div>
+            </div>
+            <div class="d2 box">
+                <div class="box-content" id="Asr">
+                    <h2>العصر</h2>
+                </div>
+            </div>
+            <div class="d2 box">
+                <div class="box-content" id="Maghrib">
+                    <h2>المغرب</h2>
+                </div>
+            </div>
+            <div class="d2 box">
+                <div class="box-content" id="Isha">
+                    <h2>العشاء</h2>
+                </div>
+            </div>
+        </div>
+        <div class="down grid2">
+            <div class="cal box card-tall">
+                <div class="box-content" id="new">cal</div>
+            </div>
+            <div class="date box">
+                <div class="box-content">1444</div>
+            </div>
+            <div class="map box">
+                <div class="box-content">map</div>
+            </div>
+            <div class="board box card-wide">
+                <div class="box-content">poet</div>
+            </div>
+        </div>
+        </div>
     </main>
+    <footer>
+        <h3>حارب - يوما ما</h3>
+    </footer>
 </body>
+<script>
+    let request = new XMLHttpRequest()
+    request.open("GET","http://api.aladhan.com/v1/timingsByCity?city=Abu%20Dhabi&country=AE")
+    request.responseType = "json"
+    request.send()
+    request.onload  = function(){
+        let data =  request.response
+        let Fajr = data.data.timings.Fajr
+        let Dhuhr = data.data.timings.Dhuhr
+        let Asr = data.data.timings.Asr
+        let Maghrib = data.data.timings.Maghrib
+        let Isha = data.data.timings.Isha
 
+        document.getElementById("Fajr").innerHTML += `<h4>${Fajr}</h4>`
+        document.getElementById("Dhuhr").innerHTML += `<h4>${Dhuhr}</h4>`
+        document.getElementById("Asr").innerHTML += `<h4>${Asr}</h4>`
+        document.getElementById("Maghrib").innerHTML += `<h4>${Maghrib}</h4>`
+        document.getElementById("Isha").innerHTML += `<h4>${Isha}</h4>`
+    }
+</script>
 </html>
