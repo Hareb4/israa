@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="style.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -16,33 +17,51 @@
         </nav>
     </header>
     <main>
-        <div class="city box">
-            <h4>Abu Dhabi</h4>
+        <div id="date" style="color: aliceblue;"></div>
+        <div class="box" style="display: flex; flex-direction: row;justify-content: space-between;">
+            <div id="Abu Dhabi" onclick="getTimes(this.id)">Abu Dhabi</div>
+            <div id="Dubai" onclick="getTimes(this.id)">Dubai</div>
+            <div id="Ajman" onclick="getTimes(this.id)">Ajman</div>
+            <div id="Fujairah" onclick="getTimes(this.id)">Fujairah</div>
+            <div id="Sharjah" onclick="getTimes(this.id)">Sharjah</div>
+            <div id="Ras Al Khaimah" onclick="getTimes(this.id)">Ras Al Khaimah</div>
+            <div id="Umm Al Quwain" onclick="getTimes(this.id)">Umm Al Quwain</div>
         </div>
         <div class="azan grid">
             <div class="d2 box">
-                <div class="box-content" id="Fajr">
+                <div class="box-content">
                     <h2>الفجر</h2>
+                    <p id="Fajr" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
-                <div class="box-content" id="Dhuhr">
+                <div class="box-content">
+                    <h2>الشروق</h2>
+                    <p id="Sunrise" class="time"></p>
+                </div>
+            </div>
+            <div class="d2 box">
+                <div class="box-content">
                     <h2>الظهر</h2>
+                    <p id="Dhuhr" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
-                <div class="box-content" id="Asr">
+                <div class="box-content">
                     <h2>العصر</h2>
+                    <p id="Asr" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
-                <div class="box-content" id="Maghrib">
+                <div class="box-content">
                     <h2>المغرب</h2>
+                    <p id="Maghrib" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
-                <div class="box-content" id="Isha">
-                    <h2>--العشاء</h2>
+                <div class="box-content">
+                    <h2>العشاء</h2>
+                    <p id="Isha" class="time"></p>
                 </div>
             </div>
         </div>
@@ -62,28 +81,36 @@
         </div>
         </div>
     </main>
-    <footer>
+    <footer id="try">
         <h3>حارب - يوما ما</h3>
     </footer>
+
+
 </body>
 <script>
-    let request = new XMLHttpRequest()
-    request.open("GET","https://api.aladhan.com/v1/timingsByCity?city=Abu%20Dhabi&country=AE")
-    request.responseType = "json"
-    request.send()
-    request.onload  = function(){
-        let data =  request.response
-        let Fajr = data.data.timings.Fajr
-        let Dhuhr = data.data.timings.Dhuhr
-        let Asr = data.data.timings.Asr
-        let Maghrib = data.data.timings.Maghrib
-        let Isha = data.data.timings.Isha
+    function getTimes(cityName) {
+        // axios.get("https://api.aladhan.com/v1/timingsByCity?city=Abu%20Dhabi&country=AE")
+        axios.get('https://api.aladhan.com/v1/timingsByCity', {
+            params: {
+                city: `${cityName}`,
+                country: "AE"
+            }
+        })
+            .then(function (response) {
+                var data = response.data.data
+                document.getElementById("date").innerHTML = data.date.readable
+                for (key in data.timings) {
+                    if (document.getElementById(`${key}`) == null) {
+                        continue
+                    } else {
+                        document.getElementById(`${key}`).innerHTML = ""
+                        document.getElementById(`${key}`).innerHTML += `${data.timings[key]}`
 
-        document.getElementById("Fajr").innerHTML += `<h4>${Fajr}</h4>`
-        document.getElementById("Dhuhr").innerHTML += `<h4>${Dhuhr}</h4>`
-        document.getElementById("Asr").innerHTML += `<h4>${Asr}</h4>`
-        document.getElementById("Maghrib").innerHTML += `<h4>${Maghrib}</h4>`
-        document.getElementById("Isha").innerHTML += `<h4>${Isha}</h4>`
+                    }
+                }
+            })
     }
+
 </script>
+
 </html>
