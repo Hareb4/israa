@@ -8,59 +8,65 @@
     <link href="style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
 </head>
 
 <body>
     <header>
-        <nav class="box navbar">
-            <h1><sup class="sup">مشروع</sup> إسراء</h1>
+        <button class="material-symbols-outlined" onclick="dark()" id="lightmodebt">
+            light_mode
+        </button>
+        <nav class="navbar">
+            <h1>إسراء</h1>
         </nav>
     </header>
     <main>
-        <div id="date" style="color: aliceblue;"></div>
-        <div class="box" style="display: flex; flex-direction: row;justify-content: space-between;">
-            <div id="Abu Dhabi" onclick="getTimes(this.id)">Abu Dhabi</div>
-            <div id="Dubai" onclick="getTimes(this.id)">Dubai</div>
-            <div id="Ajman" onclick="getTimes(this.id)">Ajman</div>
-            <div id="Fujairah" onclick="getTimes(this.id)">Fujairah</div>
-            <div id="Sharjah" onclick="getTimes(this.id)">Sharjah</div>
-            <div id="Ras Al Khaimah" onclick="getTimes(this.id)">Ras Al Khaimah</div>
-            <div id="Umm Al Quwain" onclick="getTimes(this.id)">Umm Al Quwain</div>
+        <div id="date"></div>
+        <div class="box cities">
+            <div id="Abu Dhabi" onclick="getTimes(this.id)" class="city">Abu Dhabi</div>
+            <div id="Dubai" onclick="getTimes(this.id)" class="city">Dubai</div>
+            <div id="Ajman" onclick="getTimes(this.id)" class="city">Ajman</div>
+            <div id="Fujairah" onclick="getTimes(this.id)" class="city">Fujairah</div>
+            <div id="Sharjah" onclick="getTimes(this.id)" class="city">Sharjah</div>
+            <div id="Ras Al Khaimah" onclick="getTimes(this.id)" class="city">Ras Al Khaimah</div>
+            <div id="Umm Al Quwain" onclick="getTimes(this.id)" class="city">Umm Al Quwain</div>
         </div>
         <div class="azan grid">
             <div class="d2 box">
                 <div class="box-content">
-                    <h2>الفجر</h2>
+                    <h2>Fajr - الفجر</h2>
                     <p id="Fajr" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
                 <div class="box-content">
-                    <h2>الشروق</h2>
+                    <h2>Sunrise - الشروق</h2>
                     <p id="Sunrise" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
                 <div class="box-content">
-                    <h2>الظهر</h2>
+                    <h2>Dhuhr - الظهر</h2>
                     <p id="Dhuhr" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
                 <div class="box-content">
-                    <h2>العصر</h2>
+                    <h2>Asr - العصر</h2>
                     <p id="Asr" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
                 <div class="box-content">
-                    <h2>المغرب</h2>
+                    <h2>Maghrib - المغرب</h2>
                     <p id="Maghrib" class="time"></p>
                 </div>
             </div>
             <div class="d2 box">
                 <div class="box-content">
-                    <h2>العشاء</h2>
+                    <h2>Isha - العشاء</h2>
                     <p id="Isha" class="time"></p>
                 </div>
             </div>
@@ -111,6 +117,18 @@
             })
     }
 
+    function dark() {
+        if (document.getElementById("lightmodebt").innerText == "dark_mode") {
+            document.body.classList.toggle("lightmode");
+            document.getElementById("lightmodebt").innerText = "light_mode"
+            
+        } else {
+            document.body.classList.toggle("lightmode");
+            document.getElementById("lightmodebt").innerText = "dark_mode"
+        }
+
+        console.log("working")
+    }
 </script>
 
 </html>

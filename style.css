@@ -1,9 +1,10 @@
-*{
+* {
     margin: 0;
 }
+
 body {
-    font-family: 'Roboto Mono','IBM Plex Sans Arabic', sans-serif;
-    background-color:#1b1b1b;
+    font-family: 'Roboto Mono', 'IBM Plex Sans Arabic', sans-serif;
+    background-color: #1b1b1b;
     text-align: center;
     margin: 0;
     background-repeat: space;
@@ -11,35 +12,50 @@ body {
     background-size: cover;
     object-fit: cover;
     color: aliceblue;
-    
+
+}
+/* Dark Mode */
+#lightmodebt{
+    padding: 0 1em;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
 }
 
-header{
+.lightmode{
+    background-color: #cfcfcf;
+    color: #1b1b1b;
+
+    .box,.navbar{
+        background-color: #ffffff;
+    }
+    #lightmodebt{
+        background-color: #1b1b1b;
+        color: white;
+    }
+    .city:hover{
+        background-color: #cfcfcf;
+    }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
     width: 200px;
-    padding: 0;
-	margin: 1rem auto;
+    margin: 1rem auto;
 }
 
 header h1 {
     font-size: 2em;
-    color: rgb(81, 138, 188);
-    padding: 0;
 }
-.sup{
-    font-size: 1rem;
-    color: black;
-    padding: .5em;
+.navbar{
+    display: flex;
+    justify-content: space-around;
     border-radius: 12px;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border:2px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    background-color: #343434;
+    padding: 1em;
+    border: 2px solid rgba(255, 255, 255, 0.18);
 }
-
 
 main {
     display: flex;
@@ -49,7 +65,8 @@ main {
     gap: 12px;
     padding: 10px 20px;
 }
-.grid{
+
+.grid {
     display: flex;
     flex-direction: row-reverse;
 }
@@ -77,17 +94,16 @@ main {
     border-radius: 12px;
     height: 100%;
     width: 100%;
-    background-color:#343434;
-    /* backdrop-filter: blur(10px); */
-    /* -webkit-backdrop-filter: blur(10px); */
+    background-color: #343434;
     border-radius: 20px;
-    border:2px solid rgba(255, 255, 255, 0.18);
-    /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
+    border: 2px solid rgba(255, 255, 255, 0.18);
 }
-#Dhuhr{
+
+#Dhuhr:hover {
     border: 1px solid red;
 }
-.hid{
+
+.hid {
     width: 10%;
     height: 10%;
     border-radius: 20px;
@@ -98,10 +114,24 @@ main {
     opacity: 0;
     transition: 300ms;
 }
-.hid:hover{
+
+.hid:hover {
     opacity: 1;
 }
 
+.cities {
+    display: block;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+}
+.city:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.18);
+    padding: 2px;
+    border-radius: 1em;
+    transition:300ms;
+}
 
 
 
@@ -114,11 +144,12 @@ main {
         grid-column: span 2 / auto;
     }
 
-    .grid{
+    .grid {
         display: flex;
         flex-direction: row-reverse;
         gap: 12px;
     }
+
     /*
     .grid {
         --column-count: 5;
@@ -146,21 +177,29 @@ main {
     .grid2 {
         display: grid;
         gap: 12px;
-        grid-template-columns: repeat(auto-fit,minmax(20px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
         grid-template-areas:
             'cal date map'
             'cal board board';
 
     }
+    .cities {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px;
+    }
 }
-@media  screen and (max-width:450px) {
 
-    .grid{
+@media screen and (max-width:450px) {
+
+    .grid {
         display: flex;
         flex-direction: row-reverse;
         flex-wrap: wrap;
         gap: 12px;
     }
+
     /*
     .grid {
         display: grid;
